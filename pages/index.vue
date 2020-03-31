@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
 import Card from '~/components/Card.vue'
 
 export default {
@@ -33,7 +32,6 @@ export default {
     return { topSites: result }
   },
   components: {
-    Logo,
     Card
   }
 }
