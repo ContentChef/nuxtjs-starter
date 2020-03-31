@@ -1,20 +1,22 @@
 <template>
   <div>
     <h1 class="title">
-      ContenChef + NuxtJs starter
+      Welcome to <a href="https://contentchef.io">ContentChef!</a> + <a href="https://nuxtjs.org">Nuxt.js</a> tutorial
     </h1>
     <h2 class="subtitle">
       Top Sites
     </h2>
     <div v-if="topSites.length" class="top-sites-wrapper">
       <div v-for="item in topSites">
-        <card
-          v-bind:title="item.payload.title"
-          v-bind:description="item.payload.description"
-          v-bind:url="item.payload.url"
-          v-bind:img-public-id="item.payload.image"
-          v-bind:cloud-name="item.requestContext.cloudName"
-        />
+        <n-link v-bind:to="'/top-site/' + item.publicId" class="link-wrapper">
+          <card
+            v-bind:title="item.payload.title"
+            v-bind:description="item.payload.description"
+            v-bind:url="item.payload.url"
+            v-bind:img-public-id="item.payload.image"
+            v-bind:cloud-name="item.requestContext.cloudName"
+          />
+        </n-link>
       </div>
     </div>
     <div v-else>No Contents Found.</div>
@@ -59,5 +61,9 @@ export default {
 .top-sites-wrapper {
   width: 80%;
   margin: 0 auto;
+}
+
+.link-wrapper {
+  text-decoration: none;
 }
 </style>
