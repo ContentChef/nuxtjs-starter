@@ -28,6 +28,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/ctx-contentchef-client.js'
   ],
   /*
   ** Nuxt.js dev-modules
