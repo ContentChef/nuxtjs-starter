@@ -1,25 +1,23 @@
 import ContentChefClient from '@contentchef/contentchef-node';
 
 class ContentChef {
-  client = undefined;
-  targetDate = undefined;
+  targetDate;
+  onlineChannel;
   defaultChannel = 'example-ch';
 
   constructor() {
-    this.client = ContentChefClient({
-      apiKey: 'your api key',
-      host: 'content chef api host',
-      spaceId: 'your space id',
-    }, this.targetDate);
+    this.onlineChannel = ContentChefClient({
+      spaceId: 'your-space-id',
+    }, this.targetDate).onlineChannel('your-online-api-key', this.defaultChannel);
   }
 
   setTargetDate = (targetDate) => {
     this.targetDate = targetDate;
   }
 
-  searchPreviewStagingContents = async (contentDefinition) => {
+  searchContents = async (contentDefinition) => {
     try {
-      return (await this.client.previewChannel(this.defaultChannel, 'staging').search({
+      return (await this.onlineChannel.search({
         skip: 0,
         take: 10,
         contentDefinition,
@@ -31,10 +29,9 @@ class ContentChef {
     }
   }
 
-  getPreviewStagingContent = async (publicId) => {
+  getContent = async (publicId) => {
     try {
-      const result = await this.client
-        .previewChannel(this.defaultChannel, 'staging')
+      const result = await this.onlineChannel
         .content({
           publicId
         });
