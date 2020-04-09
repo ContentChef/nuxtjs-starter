@@ -36,7 +36,6 @@ Before to start with this starter project you will need:
     1) publish to stage your all your contents inside the ***Starter Repository***
     2) install @contentchef/contentchef-node (needed to retrieve contents from ContentChef) npm install --save @contentchef/contentchef-node
     3) create a plugin inside the plugins folder to injext contentchef support class in app context and add it in nuxt.config.js 
-    4) install cloudinary-vue (since we work with cloudinary to handle media you will need of it to retrieve your media publicId) npm install cloudinary-vue and npm install current-script-polyfill (needed to use cloudinary-vue package)
     5) create a component a card that will handle your contentchef search data
     5) inside the page ***pages/index.vue*** implement the next method ***asyncData*** (used to retrieve ContentChef data) and your card component and logic to handle search contents data
     6) create a new folder inside the pages folder and call it ***top-sites*** inside the folder create a file named ***_publicId.vue***
