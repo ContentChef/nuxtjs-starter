@@ -1,10 +1,8 @@
 <template>
   <div class="card-wrapper">
     <div class="card-image-wrapper">
-      <cld-image
-        v-bind:publicId="imgPublicId"
-        v-bind:cloudName="cloudName"
-        secure="true"
+      <img
+        v-bind:src="getImageUrl(imgPublicId)"
         width="150"
         v-bind:alt="title + ' image'"
       />
@@ -17,8 +15,7 @@
   </div>
 </template>
 <script>
-  import { CldImage } from 'cloudinary-vue';
-
+  import { createUrl } from '@contentchef/contentchef-node';
   export default {
     props: {
       title: String,
@@ -27,8 +24,8 @@
       imgPublicId: String,
       cloudName: String
     },
-    components: {
-      CldImage
+    methods: {
+      getImageUrl: (publicId) => createUrl(publicId)
     }
   }
 </script>

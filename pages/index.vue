@@ -7,7 +7,7 @@
       Top Sites
     </h2>
     <div v-if="topSites.length" class="top-sites-wrapper">
-      <div v-for="item in topSites">
+      <div v-for="item in topSites" v-bind:key="item.publicId">
         <n-link v-bind:to="'/top-site/' + item.publicId" class="link-wrapper">
           <card
             v-bind:title="item.payload.title"
@@ -28,7 +28,7 @@ import Card from '~/components/Card.vue'
 
 export default {
   async asyncData (context) {
-    const result = await context.app.contentChefClient.searchPreviewStagingContents('top-site');
+    const result = await context.app.contentChefClient.searchContents('top-site');
     return { topSites: result }
   },
   components: {

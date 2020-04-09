@@ -9,11 +9,8 @@
       </p>
     </div>
     <div class="site-wrapper">
-      <cld-image
-        v-bind:publicId="topSite.image"
-        v-bind:cloudName="cloudName"
-        secure="true"
-        width="150"
+      <img 
+        v-bind:src="getImageUrl(topSite.image)"
         v-bind:alt="topSite.title + ' image'"
       />
       <div class="site-content-wrapper">
@@ -28,19 +25,18 @@
   </div>
 </template>
 <script>
-  import { CldImage } from 'cloudinary-vue';
+import { createUrl } from '@contentchef/contentchef-node';
 
 export default {
   async asyncData({ app, params }) {
-    const result = await app.contentChefClient.getPreviewStagingContent(params.publicId);
-    console.log(result.payload);
+    const result = await app.contentChefClient.getContent(params.publicId);
     return {
       topSite: result.payload,
-      cloudName: result.requestContext.cloudName
+      cloudName: result.requestContext.cloudName,
     }
   },
-  components: {
-    CldImage
+  methods: {
+    getImageUrl: (publicId) => createUrl(publicId)
   }
 }
 
