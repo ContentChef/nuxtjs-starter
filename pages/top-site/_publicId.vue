@@ -9,7 +9,7 @@
       </p>
     </div>
     <div class="site-wrapper">
-      <img 
+      <img
         v-bind:src="getImageUrl(topSite.image)"
         v-bind:alt="topSite.title + ' image'"
       />
@@ -32,7 +32,6 @@ export default {
     const result = await app.contentChefClient.getContent(params.publicId);
     return {
       topSite: result.payload,
-      cloudName: result.requestContext.cloudName,
     }
   },
   methods: {

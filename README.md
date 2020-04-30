@@ -1,50 +1,74 @@
+<div align="center">
+  <img src="/contentchef_logo.svg" height="64"/>
+</div>
+
+NuxtJs Starter for [ContentChef - Headless CMS](https://www.contentchef.io/)
+===========================
+
+[ContentChef](https://www.contentchef.io/) is an Headless CMS designed to accelarete the development of modern,cross channel digital products.
+
+This starter is a simple [NuxtJs](https://nuxtjs.org/) integrated with our Delivery API using the [ContentChef JS/Typescript SDK](https://github.com/ContentChef/contentchef-node)
+
+In this example plain JS is used, but our SDK is primarly written for **Typescript** applications!
+
+# Requirements
+
+In order to use make this starter work, you will need
+
+* An active ContentChef account (sign up for a 30-day free trial [here](https://www.contentchef.io/registration))
+* Node JS >= 10.13
+
 # nuxtjs-starter
 
-> ContenChef + NuxtJs starter
+# Clone & Installation
 
-## Build Setup
+Clone the starter repo and install all the deps
 
 ```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
+    git https://github.com/ContentChef/nuxtjs-starter.git
+    cd nuxtjs-starter
+    npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Get your SpaceID, Online API Key from your dashboard home page.
 
-Inside the pages you can find two pages:
-    - `pages/index.vue` in this page you will find an example of list of published contents
-    - `pages/top-site/_publicId.vue` in this page you will find an example of a published content
+![ContentChef Dashboard - Home](https://res.cloudinary.com/contentchef/image/upload/v1/chefsite-2910/I49Zi00Uf7S/spaceid)
 
-## Before to start
-Before to start with this starter project you will need:
+Open `./plugins/ctx-contentchef-client.js` and copy your data in the client configuration and use "example-ch" for your channel now.
 
-    - an active ContentChef subscription and an active space 
-    - your spaceId, spaceApiKey and the ContentChef api url (you can get those information in your space home inside the ContentChef dashboard app) 
+```javascript
+    import ContentChefClient, { createUrl } from '@contentchef/contentchef-node';
 
-## STEP
+    class ContentChef {
+      targetDate;
+      onlineChannel;
+      defaultChannel = 'example-ch';
+    
+      constructor() {
+        this.onlineChannel = ContentChefClient({
+          spaceId: 'your-space-id',
+        }, this.targetDate).onlineChannel('your-online-api-key', this.defaultChannel);
+      }
+    }
 
-    1) publish to stage your all your contents inside the ***Starter Repository***
-    2) install @contentchef/contentchef-node (needed to retrieve contents from ContentChef) npm install --save @contentchef/contentchef-node
-    3) create a plugin inside the plugins folder to injext contentchef support class in app context and add it in nuxt.config.js 
-    5) create a component a card that will handle your contentchef search data
-    5) inside the page ***pages/index.vue*** implement the next method ***asyncData*** (used to retrieve ContentChef data) and your card component and logic to handle search contents data
-    6) create a new folder inside the pages folder and call it ***top-sites*** inside the folder create a file named ***_publicId.vue***
-    7) inside the file ***_publicId.vue*** implement the next method ***asyncData*** (used to retrieve ContentChef data) and add logic inside component to show your ContentChef get data
+```
 
-## Learn More
+You are now ready to start the nuxtjs server
 
-To learn more about ContentChef and Next.js, take a look at the following resources:
+```bash
 
-- [ContentChef Site](https://contentchef.io) - to know more about ContentChef
-- [ContentChef Documentation](https://docs.contentchef.io/) - learn about ContentChef features
-- [Nuxt.js docs](https://nuxtjs.org/) - learn about Nuxt.js features and API.
+    npm run dev
+
+```
+
+Enjoy!
+
+You can now visit [https://localhost:3000/](https://localhost:3000/) and see the list of content fetched from Content Chef!
+
+To Learns More
+===========================
+
+* [ContentChef Website](https://wwww.contentchef.io)
+* [ContentChef Docs](https://docs.contentchef.io)
+* [ContentChef Blog](https://www.contentchef.io/blog)
+* [Nuxt.js Documentation](https://nuxtjs.org/) - learn about Nuxt.js features and API.
