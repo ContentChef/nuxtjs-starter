@@ -14,7 +14,6 @@
             v-bind:description="item.payload.description"
             v-bind:url="item.payload.url"
             v-bind:img-public-id="item.payload.image"
-            v-bind:cloud-name="item.requestContext.cloudName"
           />
         </n-link>
       </div>

@@ -22,7 +22,6 @@
       description: String,
       url: String,
       imgPublicId: String,
-      cloudName: String
     },
     methods: {
       getImageUrl: (publicId) => createUrl(publicId)
