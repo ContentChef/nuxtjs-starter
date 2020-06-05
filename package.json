@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@contentchef/contentchef-node": "^2.2.1",
+    "@contentchef/contentchef-node": "^2.2.4",
     "@nuxtjs/axios": "^5.3.6",
     "current-script-polyfill": "^1.0.0",
     "nuxt": "^2.0.0"
