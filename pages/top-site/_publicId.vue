@@ -25,7 +25,7 @@
   </div>
 </template>
 <script>
-import { createUrl } from '@contentchef/contentchef-node';
+import { createUrl } from '@contentchef/contentchef-media';
 
 export default {
   async asyncData({ app, params }) {

@@ -1,4 +1,4 @@
-import ContentChefClient from '@contentchef/contentchef-node';
+import { configure } from '@contentchef/contentchef-node';
 
 class ContentChef {
   targetDate;
@@ -6,7 +6,7 @@ class ContentChef {
   defaultChannel = 'example-ch';
 
   constructor() {
-    this.onlineChannel = ContentChefClient({
+    this.onlineChannel = configure({
       spaceId: 'your-space-id',
     }, this.targetDate).onlineChannel('your-online-api-key', this.defaultChannel);
   }
